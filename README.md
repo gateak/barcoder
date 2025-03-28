@@ -41,6 +41,11 @@ A simple Python application that uses your webcam to scan barcodes and capture i
    pip install -r requirements.txt
    ```
 
+   Or install the package directly:
+   ```
+   pip install -e .
+   ```
+
    Note: On macOS, you might need to install Qt dependencies separately:
    ```
    brew install qt
@@ -50,7 +55,17 @@ A simple Python application that uses your webcam to scan barcodes and capture i
 
 1. Run the application:
    ```
-   python barcoder.py
+   python run.py
+   ```
+
+   Or use the provided shell script:
+   ```
+   ./run_barcoder.sh
+   ```
+
+   If you installed the package, you can run:
+   ```
+   barcoder
    ```
 
 2. Point your camera at a barcode

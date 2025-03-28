@@ -1,0 +1,8 @@
+include README.md
+include LICENSE
+include requirements.txt
+include run_barcoder.sh
+include run.py
+
+recursive-include barcoder/config *.json
+recursive-include barcoder/images *.jpg *.jpeg

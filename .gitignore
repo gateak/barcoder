@@ -2,11 +2,30 @@
 __pycache__/
 *.py[cod]
 *$py.class
+*.so
+.Python
+
+# app specific
+client_secrets.json
+mycreds.txt
 
 # Distribution / packaging
 dist/
 build/
+develop-eggs/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
 *.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
 
 # Virtual environments
 venv/
@@ -28,3 +47,13 @@ Thumbs.db
 *.jpg
 *.jpeg
 *.png
+
+# Credentials
+barcoder/config/client_secrets.json
+barcoder/config/mycreds.txt
+
+# Images
+barcoder/images/*.jpg
+barcoder/images/*.jpeg
+images/*.jpg
+images/*.jpeg
