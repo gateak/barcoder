@@ -1,4 +1,5 @@
-from PyQt5.QtWidgets import QDialog, QFormLayout, QLineEdit, QDialogButtonBox, QIntValidator
+from PyQt5.QtWidgets import QDialog, QFormLayout, QLineEdit, QDialogButtonBox
+from PyQt5.QtGui import QIntValidator
 
 class DriveSettingsDialog(QDialog):
     def __init__(self, parent=None, current_folder="BarcoderImages", current_sync_interval=60, current_local_folder="images"):

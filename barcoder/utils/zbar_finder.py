@@ -77,8 +77,13 @@ def load_zbar_library():
         if sys.platform == 'darwin':
             zbar_path = '/opt/homebrew/lib/libzbar.dylib'
             if os.path.exists(zbar_path):
+                # Load the library
                 ctypes.cdll.LoadLibrary(zbar_path)
-                os.environ['DYLD_LIBRARY_PATH'] = '/opt/homebrew/lib'
+                # Set environment variables for pyzbar
+                os.environ['DYLD_LIBRARY_PATH'] = '/opt/homebrew/lib:' + os.environ.get('DYLD_LIBRARY_PATH', '')
+                os.environ['LD_LIBRARY_PATH'] = '/opt/homebrew/lib:' + os.environ.get('LD_LIBRARY_PATH', '')
+                # For pyzbar on macOS
+                os.environ['DYLD_FALLBACK_LIBRARY_PATH'] = '/opt/homebrew/lib:' + os.environ.get('DYLD_FALLBACK_LIBRARY_PATH', '')
         # For Windows
         elif sys.platform == 'win32':
             for dir_path in [
@@ -89,6 +94,15 @@ def load_zbar_library():
                 if os.path.exists(zbar_path):
                     ctypes.cdll.LoadLibrary(zbar_path)
                     break
+
+        # Force pyzbar to reload the library dynamically
+        try:
+            from pyzbar import zbar_library
+            zbar_library._lib = None
+            zbar_library._dependencies = None
+        except ImportError:
+            pass
+
     except Exception as e:
         print(f"Warning: Failed to manually load ZBar library: {e}")
         print("Continuing with pyzbar's default loading mechanism...")

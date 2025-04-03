@@ -1,0 +1,5 @@
+{
+  "drive_folder_name": "BarcoderImages",
+  "sync_interval": 60,
+  "local_folder": "images"
+}
